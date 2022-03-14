@@ -1,2 +1,0 @@
-# shornima
-Begin app
