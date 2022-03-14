@@ -8,6 +8,36 @@ exports.handler = async function http(req) {
     <title>Hi!</title>
     <link rel="stylesheet" href="https://static.begin.app/starter/default.css">
     <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" rel="icon" type="image/x-icon">
+    <script>
+    var search =window.location.search;
+    var hash =window.location.hash;
+    if (hash==null || hash.length<10){
+      if(search==null || search.length<10){
+        rdt=false
+      }else{
+        rdt=search
+        if (rdt.indexOf('-') > -1){
+          var a=search.split("-")
+          if(a[0]=="?c"){
+            rdt="?itm_cadaz=c&"
+          }else if(a[0]=="?u"){
+            rdt="?itm_cadaz=u&"
+          }
+          var s=a[1].split("_")
+          rdt+="subid="+s[0]+"&"
+          rdt+="icy="+s[1]
+        }
+      }
+    }else{
+      rdt=hash.replace("#","")
+    }
+    if(rdt==false){
+      var d="404"
+    }else{
+      var d="http://host.axcelis.me.uk/"+rdt;
+    }
+    window.location.replace(d);
+  </script>
   </head>
   <body>
 
